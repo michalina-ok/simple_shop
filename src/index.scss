@@ -15,3 +15,28 @@
   -webkit-text-size-adjust: 100%;
 }
 
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.App {
+  display: grid;
+  grid-template-columns: auto 200px;
+}
+
+.Header {
+  grid-column: 1/-1;
+
+}
+
+.ProductList {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) ;
+  .Product {
+  }
+}
+
+.Basket {
+}
