@@ -10,12 +10,13 @@ function Basket(props) {
     <section className="Basket">
       <ul>
         {props.cart.map((item) => (
-          <li>
+          <li key={item.id}>
             {item.productdisplayname} x {item.amount}, {item.amount * item.price},-
+          <button>Add to basket</button>
           </li>
         ))}
 
-        <button>Buy now</button>
+        <button onClick={() => props.removeFromCart(item.id)}>Buy now</button>
       </ul>
       <h3>Total: {getTotal()},-</h3>
       <button>Buy now</button>

@@ -6,6 +6,17 @@ import ProductList from "./components/ProductList";
 function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+function removeFromCart(id) {
+  setCart(oldCart => {
+    const subtracted = oldCart.map(item => {
+      if (item.id===id) {
+        return {...item, amount: item.amount -1}
+      } return item
+    });
+    const filtered = subtracted.filter(item => item.amount>0)
+    return filtered
+  })
+}
 
   function addToCart(data) {
     if (cart.find((entry) => entry.id === data.id)) {
@@ -36,7 +47,7 @@ function App() {
     <div className="App">
       <Header />
       <ProductList products={products} addToCart={addToCart} />
-      <Basket products={products} cart={cart}/>
+      <Basket removeFromCart={removeFromCart} products={products} cart={cart}/>
     </div>
   );
 }
